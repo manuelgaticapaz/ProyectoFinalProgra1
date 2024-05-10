@@ -15,7 +15,7 @@ namespace ProyectoFinal
 
         public Conexion()
         {
-            cn = new SqlConnection("Server=JCMENDEZ;Database=inventario;User Id=sa");
+            cn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
         }
 
         public void Abrir_cn()
