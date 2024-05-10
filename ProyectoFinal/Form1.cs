@@ -21,16 +21,16 @@ namespace ProyectoFinal
         private void huespedToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmHuesped frmHuesped = new frmHuesped();
-            frmHuesped.MdiParent = this;
-            frmHuesped.Show();
+            frmHuesped.ShowDialog();
         }
 
         private void nuevoEditarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmServicio frmServicio = new frmServicio();
-            frmServicio .MdiParent = this;
-            frmServicio.Show();
-            
+            frmServicio.ShowDialog();
+
         }
+
+
     }
 }
