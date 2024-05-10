@@ -22,7 +22,6 @@ namespace ProyectoFinal
         private void label2_Click(object sender, EventArgs e)
         {
 
-        }
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
@@ -35,7 +34,6 @@ namespace ProyectoFinal
 + txtEmail.Text + "', "
 + int.Parse(txtTelefono.Text) + ", '"+ txtTipodeHuesped.Text + "') ";
 
-            comando.SqlCommand(strCat);
         }
 
         private void frmHuesped_Load(object sender, EventArgs e)
