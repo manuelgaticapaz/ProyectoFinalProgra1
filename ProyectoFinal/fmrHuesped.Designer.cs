@@ -46,6 +46,8 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtnumIdentificacionHuesped = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -209,11 +211,29 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(77, 264);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 16);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "No Identificacion";
+            // 
+            // txtnumIdentificacionHuesped
+            // 
+            this.txtnumIdentificacionHuesped.Location = new System.Drawing.Point(215, 264);
+            this.txtnumIdentificacionHuesped.Name = "txtnumIdentificacionHuesped";
+            this.txtnumIdentificacionHuesped.Size = new System.Drawing.Size(100, 22);
+            this.txtnumIdentificacionHuesped.TabIndex = 19;
+            // 
             // frmHuesped
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtnumIdentificacionHuesped);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnModificar);
@@ -235,6 +255,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmHuesped";
             this.Text = "Huesped";
+            this.Load += new System.EventHandler(this.frmHuesped_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,5 +281,7 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtnumIdentificacionHuesped;
     }
 }
