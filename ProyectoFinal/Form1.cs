@@ -16,5 +16,22 @@ namespace ProyectoFinal
         {
             InitializeComponent();
         }
+
+        private void huespedToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmHuesped frmHuesped = new frmHuesped();
+            frmHuesped.MdiParent = this;
+            frmHuesped.Show();
+        }
+
+        private void nuevoEditarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmServicio frmServicio = new frmServicio();
+            frmServicio .MdiParent = this;
+            frmServicio.Show();
+            //Integrated Security = SSPI; Persist Security Info = False; Initial Catalog = EjemploAlgoritmodeBusquedaLineal; Data Source = DESKTOP - TAVF458\SQLEXPRESS
+
+
+        }
     }
 }

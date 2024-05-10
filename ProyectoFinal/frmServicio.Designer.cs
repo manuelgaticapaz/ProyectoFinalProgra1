@@ -29,13 +29,11 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtIDServicios = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtCosto = new System.Windows.Forms.TextBox();
@@ -57,19 +55,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "IDServicios";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(177, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Codigo";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(177, 102);
+            this.label3.Location = new System.Drawing.Point(177, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 16);
             this.label3.TabIndex = 2;
@@ -78,7 +67,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(177, 141);
+            this.label4.Location = new System.Drawing.Point(177, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 16);
             this.label4.TabIndex = 3;
@@ -87,7 +76,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(177, 175);
+            this.label5.Location = new System.Drawing.Point(177, 148);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 16);
             this.label5.TabIndex = 4;
@@ -96,7 +85,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(177, 214);
+            this.label6.Location = new System.Drawing.Point(177, 187);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 16);
             this.label6.TabIndex = 5;
@@ -105,19 +94,12 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(177, 256);
+            this.label7.Location = new System.Drawing.Point(177, 229);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 16);
             this.label7.TabIndex = 6;
             this.label7.Text = "Reservas";
             this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(298, 61);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(100, 22);
-            this.txtCodigo.TabIndex = 7;
             // 
             // txtIDServicios
             // 
@@ -128,42 +110,42 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(298, 99);
+            this.txtDescripcion.Location = new System.Drawing.Point(298, 72);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(291, 22);
             this.txtDescripcion.TabIndex = 9;
             // 
             // txtCosto
             // 
-            this.txtCosto.Location = new System.Drawing.Point(298, 141);
+            this.txtCosto.Location = new System.Drawing.Point(298, 114);
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(100, 22);
             this.txtCosto.TabIndex = 10;
             // 
             // txtHorario
             // 
-            this.txtHorario.Location = new System.Drawing.Point(298, 175);
+            this.txtHorario.Location = new System.Drawing.Point(298, 148);
             this.txtHorario.Name = "txtHorario";
             this.txtHorario.Size = new System.Drawing.Size(100, 22);
             this.txtHorario.TabIndex = 11;
             // 
             // txtDisponibilidad
             // 
-            this.txtDisponibilidad.Location = new System.Drawing.Point(298, 214);
+            this.txtDisponibilidad.Location = new System.Drawing.Point(298, 187);
             this.txtDisponibilidad.Name = "txtDisponibilidad";
             this.txtDisponibilidad.Size = new System.Drawing.Size(100, 22);
             this.txtDisponibilidad.TabIndex = 12;
             // 
             // txtReservas
             // 
-            this.txtReservas.Location = new System.Drawing.Point(298, 256);
+            this.txtReservas.Location = new System.Drawing.Point(298, 229);
             this.txtReservas.Name = "txtReservas";
             this.txtReservas.Size = new System.Drawing.Size(100, 22);
             this.txtReservas.TabIndex = 13;
             // 
             // btnGrabar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(168, 317);
+            this.btnGrabar.Location = new System.Drawing.Point(168, 290);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(75, 23);
             this.btnGrabar.TabIndex = 14;
@@ -172,7 +154,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(168, 361);
+            this.btnModificar.Location = new System.Drawing.Point(168, 334);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 15;
@@ -181,7 +163,7 @@
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(402, 317);
+            this.btnBorrar.Location = new System.Drawing.Point(402, 290);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(75, 23);
             this.btnBorrar.TabIndex = 16;
@@ -190,7 +172,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(402, 361);
+            this.btnSalir.Location = new System.Drawing.Point(402, 334);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 17;
@@ -212,13 +194,11 @@
             this.Controls.Add(this.txtCosto);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtIDServicios);
-            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmServicio";
             this.Text = "Servicio";
@@ -231,13 +211,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtIDServicios;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtCosto;
