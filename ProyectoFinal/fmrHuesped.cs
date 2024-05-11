@@ -75,7 +75,7 @@ namespace ProyectoFinal
             AccesoDatos aDat = new AccesoDatos();
 
             Huesped huesped = new Huesped(txtIDHuesped.Text, txtNombres.Text, txtApellidos.Text, long.Parse(txtnumIdentificacionHuesped.Text));
-            cnx = new SqlConnection("Data Source=Kensi\\MSSQLSERVER01;Initial Catalog=proyectoP1;Integrated Security=True");
+            cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
             SqlCommand cmd = new SqlCommand("sp_huesped", cnx);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@orden", 3);
