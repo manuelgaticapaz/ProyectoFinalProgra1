@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,8 @@ namespace ProyectoFinal
 {
     public partial class frmServicio : Form
     {
-        public string StrCat;
-        AccesoDatos comando = new AccesoDatos();
+
+        public static SqlConnection cnx;
         public frmServicio()
         {
             InitializeComponent();
@@ -32,9 +33,25 @@ namespace ProyectoFinal
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             Servicio servicio = new Servicio( txtIDServicios.Text, txtDescripcion.Text, double.Parse(txtCosto.Text), txtHoraInicio.Text, txtHoraFinal.Text, txtDisponibilidad.Text, txtReservas.Text);
-            StrCat = "INSERT INTO [dbo].[SVC_SERVICIO]\r\n           ([SVC_ID]\r\n           ,[SVC_DESCRIPCION]\r\n           ,[SVC_VALOR]\r\n           ,[SVC_HORA_INICIO]\r\n           ,[SVC_HORA_FINAL]\r\n           ,[SVC_DISPONIBILIDAD]\r\n           ,[SVC_RESERVAS]\r\n ) values(";
-            StrCat = StrCat + "'" + txtIDServicios.Text + "', '" + txtDescripcion.Text + "', " + double.Parse(txtCosto.Text) + ", '" + txtHoraInicio.Text + "', '" + txtHoraFinal.Text + "', '" + Convert.ToBoolean(int.Parse(txtDisponibilidad.Text)) + "',  '" + Convert.ToBoolean(int.Parse(txtReservas.Text)) + "') ";
-            comando.SqlCommand(StrCat);
+            cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
+            SqlCommand cmd = new SqlCommand("sp_servicio", cnx);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@orden", 0);
+
+            cmd.Parameters.AddWithValue("@id", servicio.IdServicio);
+            cmd.Parameters.AddWithValue("@descripcion", servicio.Descripcion);
+            cmd.Parameters.AddWithValue("@valor", servicio.Valor);
+            cmd.Parameters.AddWithValue("@horaInicio", servicio.Horainicio);
+            cmd.Parameters.AddWithValue("@horaFinal", servicio.Horafinal);
+            cmd.Parameters.AddWithValue("@disponibilidad", servicio.Disponibilidad);
+            cmd.Parameters.AddWithValue("@reservas", servicio.Reservas);
+           
+            cnx.Open();
+            cmd.ExecuteNonQuery();
+            cnx.Close();
+
+            MessageBox.Show("Servicio grabado...");
+            this.Close();
         }
         private void frmServicio_Loadobject (object sender, EventArgs e)
         {
