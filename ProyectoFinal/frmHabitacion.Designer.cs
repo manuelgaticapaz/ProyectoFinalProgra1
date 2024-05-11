@@ -224,6 +224,7 @@ namespace ProyectoFinal
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtIDservicio);
+            this.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.Name = "frmHabitacion";
             this.Text = "frmHabitacion";
             this.ResumeLayout(false);
