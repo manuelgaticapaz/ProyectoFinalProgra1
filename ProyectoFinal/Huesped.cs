@@ -17,7 +17,13 @@ namespace ProyectoFinal
         private int telefonoHuesped;
         private string tipoHuesped;
 
-        
+        public Huesped(string idHuesped, string nombresHuesped, string apellidosHuesped, long numIdentificacionHuesped)
+        {
+            this.idHuesped = idHuesped;
+            this.nombresHuesped = nombresHuesped;
+            this.apellidosHuesped = apellidosHuesped;
+            this.numIdentificacionHuesped = numIdentificacionHuesped;
+        }
 
         public Huesped(string idHuesped, string nombresHuesped, string apellidosHuesped, long numIdentificacionHuesped, string direccionHuesped, string emailHuesped, int telefonoHuesped, string tipoHuesped)
         {

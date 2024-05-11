@@ -33,13 +33,18 @@ namespace ProyectoFinal
 
         private void frmServicio_Load(object sender, EventArgs e)
         {
-
+            btnGrabar.Text = "Nuevo";
+            btnModificar.Enabled = false;
+            btnBorrar.Enabled = false;
+            txtIDServicios.Enabled = false;
+            txtDescripcion.Enabled = false;
+            txtCosto.Enabled = false;
+            txtHoraInicio.Enabled = false;
+            txtHoraFinal.Enabled = false;
+            txtDisponibilidad.Enabled = false;
+            txtReservas.Enabled = false;
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {

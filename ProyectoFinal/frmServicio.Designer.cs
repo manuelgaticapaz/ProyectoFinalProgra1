@@ -101,7 +101,6 @@
             this.label7.Size = new System.Drawing.Size(66, 16);
             this.label7.TabIndex = 6;
             this.label7.Text = "Reservas";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // txtIDServicios
             // 

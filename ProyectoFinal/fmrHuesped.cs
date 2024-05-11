@@ -21,10 +21,10 @@ namespace ProyectoFinal
             btnGrabar.Text = "Nuevo";
             btnModificar.Enabled = false;
             btnBorrar.Enabled = false;
-            txtIDHuesped.Enabled = false;
-            txtNombres.Enabled = false;
-            txtApellidos.Enabled = false;
-            txtnumIdentificacionHuesped.Enabled = false;
+            txtIDHuesped.Enabled = true;
+            txtNombres.Enabled = true;
+            txtApellidos.Enabled = true;
+            txtnumIdentificacionHuesped.Enabled = true;
             txtDireccion.Enabled = false;
             txtEmail.Enabled = false;
             txtTelefono.Enabled = false;
@@ -69,6 +69,37 @@ namespace ProyectoFinal
             }
         }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            DataTable dti = new DataTable();
+            AccesoDatos aDat = new AccesoDatos();
 
+            Huesped huesped = new Huesped(txtIDHuesped.Text, txtNombres.Text, txtApellidos.Text, long.Parse(txtnumIdentificacionHuesped.Text));
+            cnx = new SqlConnection("Data Source=Kensi\\MSSQLSERVER01;Initial Catalog=proyectoP1;Integrated Security=True");
+            SqlCommand cmd = new SqlCommand("sp_huesped", cnx);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@orden", 3);
+            cmd.Parameters.AddWithValue("@id", huesped.IdHuesped);
+            cmd.Parameters.AddWithValue("@nombre", huesped.NombresHuesped);
+            cmd.Parameters.AddWithValue("@apellido", huesped.ApellidosHuesped);
+            cmd.Parameters.AddWithValue("@numIdentificacion",  huesped.NumIdentificacionHuesped);
+            cmd.Parameters.AddWithValue("@direccion", "");
+            cmd.Parameters.AddWithValue("@email", "");
+            cmd.Parameters.AddWithValue("@telefono", 0);
+            cmd.Parameters.AddWithValue("@tipoHuesped", "");
+            dti = aDat.ObtieneData(cmd);
+            /*cnx.Open();
+            cmd.ExecuteNonQuery();
+            cnx.Close();*/
+            dgvBuscaHuesped.DataSource = dti;
+
+            
+
+
+
+
+
+
+        }
     }
 }

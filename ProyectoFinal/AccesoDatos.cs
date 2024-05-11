@@ -45,7 +45,7 @@ namespace ProyectoFinal
 
 
 
-        public DataTable ObtieneData(string strSql)
+        public DataTable ObtieneData(SqlCommand strSql)
         {
             SqlCommand sqlCmd = new SqlCommand();
             SqlDataAdapter da = new SqlDataAdapter();
@@ -54,10 +54,10 @@ namespace ProyectoFinal
             try
             {
                 dt.Clear();
-                sqlCmd.CommandText = strSql;
+             //   sqlCmd.CommandText = strSql;
                 sqlCmd.Connection = cn;
-                sqlCmd.CommandText = (@strSql);
-                da.SelectCommand = sqlCmd;
+               // sqlCmd.CommandText = (@strSql);
+                da.SelectCommand = strSql;
                 da.Fill(dt);
             }
             catch (Exception e)
