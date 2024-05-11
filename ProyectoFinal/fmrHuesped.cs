@@ -33,13 +33,6 @@ namespace ProyectoFinal
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            Huesped huesped = new Huesped( txtIDHuesped.Text, txtNombres.Text, txtApellidos.Text, int.Parse(txtnumIdentificacionHuesped.Text), txtDireccion.Text, txtEmail.Text, int.Parse(txtTelefono.Text), txtTipodeHuesped.Text);
-            strCat = "INSERT INTO [dbo].[HSD_HUESPED]\r\n           ([HSD_ID]\r\n           ,[HSD_NOMBRE]\r\n           ,[HSD_APELLIDO]\r\n           ,[HSD_NUMERO_IDENTIFICACION]\r\n           ,[HSD_DIRECCION]\r\n           ,[HSD_EMAIL]\r\n           ,[HSD_TELEFONO]\r\n           ,[HSD_TIPO_HUESPED])\r\n     VALUES\r\n           ( ";
-            strCat = strCat + "'" + txtIDHuesped.Text + "', '" + txtNombres.Text + "', '"+ txtApellidos.Text + "', "+ int.Parse(txtnumIdentificacionHuesped.Text) + ", '"+ txtDireccion.Text + "', '"
-+ txtEmail.Text + "', "
-+ int.Parse(txtTelefono.Text) + ", '"+ txtTipodeHuesped.Text + "') ";
-=======
             btnGrabar.Text = "Grabar";
             btnModificar.Enabled = true;
             btnBorrar.Enabled = true;
@@ -51,7 +44,6 @@ namespace ProyectoFinal
             txtEmail.Enabled = true;
             txtTelefono.Enabled = true;
             txtTipodeHuesped.Enabled = true;
->>>>>>> ad5fb319f92e5417d44c6d6a76b48984b3191fce
 
             if (txtIDHuesped.Text != "")
             {
