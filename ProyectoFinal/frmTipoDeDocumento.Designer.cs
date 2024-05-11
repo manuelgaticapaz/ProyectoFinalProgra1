@@ -185,6 +185,7 @@ namespace ProyectoFinal
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmTipoDeDocumento";
             this.Text = "frmTipoDeDocumento";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 

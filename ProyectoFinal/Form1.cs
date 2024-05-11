@@ -31,6 +31,11 @@ namespace ProyectoFinal
 
         }
 
+        private void promociónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTipoDeDocumento frmTipoDeDocumento = new frmTipoDeDocumento();
+            frmTipoDeDocumento.ShowDialog();
 
+        }
     }
 }
