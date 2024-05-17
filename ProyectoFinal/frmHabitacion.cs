@@ -14,18 +14,38 @@ namespace ProyectoFinal
     public partial class frmHabitacion : Form
     {
         public static SqlConnection cnx;
+        ////Joaquin
+        //public string cadenaConexión = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n";
+        //Manuel
+        public string cadenaConexión = "Data Source=Kensi\\MSSQLSERVER01;Initial Catalog=proyectoP1;Integrated Security=True";
 
         public frmHabitacion()
         {
             InitializeComponent();
             btnGrabar.Text = "Nuevo";
             btnModificar.Enabled = false;
-            btnBorrar.Enabled = false;
+            btnBorrar.Enabled = true;
             txtIDHabitacion.Enabled = true;
             txtNombre.Enabled= false;
             txtDescripcion.Enabled=false;
             txtCapacidadP.Enabled=false;
             txtPrecio.Enabled=false;
+
+            DataTable dti = new DataTable();
+            AccesoDatos aDat = new AccesoDatos();
+
+            cnx = new SqlConnection(cadenaConexión);
+            SqlCommand cmd = new SqlCommand("sp_tipo_habitacion", cnx);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@orden", 4);
+            dti = aDat.ObtieneData(cmd);
+            /*cnx.Open();
+            cmd.ExecuteNonQuery();
+            cnx.Close();*/
+            dgvBuscaHabitacion.DataSource = dti;
+            dgvBuscaHabitacion.SelectionChanged += dataGridView1_SelectionChanged;
+
+
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
@@ -45,7 +65,7 @@ namespace ProyectoFinal
 
 
              Habitacion habitacion = new Habitacion(int.Parse(txtIDHabitacion.Text), txtNombre.Text, txtDescripcion.Text, int.Parse(txtCapacidadP.Text), double.Parse(txtPrecio.Text));
-                cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
+                cnx = new SqlConnection(cadenaConexión);
                 SqlCommand cmd = new SqlCommand("sp_tipo_habitacion", cnx);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@orden", 0);
@@ -76,7 +96,7 @@ namespace ProyectoFinal
 
 
                 Habitacion habitacion = new Habitacion(int.Parse(txtIDHabitacion.Text), txtNombre.Text, txtDescripcion.Text, int.Parse(txtCapacidadP.Text), double.Parse(txtPrecio.Text));
-                cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
+                cnx = new SqlConnection(cadenaConexión);
                 SqlCommand cmd = new SqlCommand("sp_tipo_habitacion", cnx);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@orden", 1);
@@ -101,7 +121,7 @@ namespace ProyectoFinal
             if (txtIDHabitacion.Text != "")
             {
                 Habitacion habitacion = new Habitacion(int.Parse(txtIDHabitacion.Text), txtNombre.Text, txtDescripcion.Text, int.Parse(txtCapacidadP.Text), double.Parse(txtPrecio.Text));
-                cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
+                cnx = new SqlConnection(cadenaConexión);
                 SqlCommand cmd = new SqlCommand("sp_tipo_habitacion", cnx);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@orden", 2);
@@ -126,5 +146,20 @@ namespace ProyectoFinal
         {
             this.Close();
         }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvBuscaHabitacion.SelectedRows.Count > 0)
+            {
+                // Obtener la fila seleccionada
+                DataGridViewRow row = dgvBuscaHabitacion.SelectedRows[0];
+                txtIDHabitacion.Text = row.Cells["Id"].Value.ToString();
+                txtNombre.Text = row.Cells["Nombre"].Value.ToString();
+                txtDescripcion.Text = row.Cells["Descripcion"].Value.ToString();
+                txtCapacidadP.Text = row.Cells["Capacidad"].Value.ToString();
+                txtPrecio.Text = row.Cells["Precio"].Value.ToString();
+            }
+        }
+
     }
 }
