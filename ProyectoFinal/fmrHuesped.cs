@@ -41,14 +41,6 @@ namespace ProyectoFinal
             SqlCommand cmd = new SqlCommand("sp_huesped", cnx);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@orden", 4);
-            cmd.Parameters.AddWithValue("@id", null);
-            cmd.Parameters.AddWithValue("@nombre", null);
-            cmd.Parameters.AddWithValue("@apellido", null);
-            cmd.Parameters.AddWithValue("@numIdentificacion", null);
-            cmd.Parameters.AddWithValue("@direccion", null);
-            cmd.Parameters.AddWithValue("@email", null);
-            cmd.Parameters.AddWithValue("@telefono", null);
-            cmd.Parameters.AddWithValue("@tipoHuesped", null);
             dti = aDat.ObtieneData(cmd);
             /*cnx.Open();
             cmd.ExecuteNonQuery();
@@ -114,21 +106,11 @@ namespace ProyectoFinal
             cmd.Parameters.AddWithValue("@nombre", huesped.NombresHuesped);
             cmd.Parameters.AddWithValue("@apellido", huesped.ApellidosHuesped);
             cmd.Parameters.AddWithValue("@numIdentificacion", huesped.NumIdentificacionHuesped);
-            cmd.Parameters.AddWithValue("@direccion", "");
-            cmd.Parameters.AddWithValue("@email", "");
-            cmd.Parameters.AddWithValue("@telefono", 0);
-            cmd.Parameters.AddWithValue("@tipoHuesped", "");
             dti = aDat.ObtieneData(cmd);
             /*cnx.Open();
             cmd.ExecuteNonQuery();
             cnx.Close();*/
             dgvBuscaHuesped.DataSource = dti;
-
-
-
-
-
-
 
 
         }
