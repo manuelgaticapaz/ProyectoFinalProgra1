@@ -157,19 +157,6 @@ namespace ProyectoFinal
 
             this.Close();
         }
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvBuscaHuesped.SelectedRows.Count > 0)
-            {
-                // Obtener la fila seleccionada
-                DataGridViewRow row = dgvBuscaHuesped.SelectedRows[0];
 
-                // Asumimos que queremos mostrar el valor de la columna "Nombre" en el TextBox
-                string nombre = row.Cells["Nombre"].Value.ToString();
-                string nombres = row.Cells["[HSD_NOMBRE]"].Value.ToString();
-                // Mostrar el valor en el TextBox
-                txtNombres.Text = nombres;
-            }
-        }
     }
 }
