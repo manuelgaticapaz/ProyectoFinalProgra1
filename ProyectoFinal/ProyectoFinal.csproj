@@ -78,6 +78,7 @@
     <Compile Include="frmTipoDeDocumento.Designer.cs">
       <DependentUpon>frmTipoDeDocumento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Habitacion.cs" />
     <Compile Include="Huesped.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

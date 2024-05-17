@@ -47,8 +47,6 @@
             this.deshabilitarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tiposDeHabitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.agregarEditarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verTodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoEditarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.catálogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -188,24 +186,10 @@
             // 
             // tiposDeHabitaciónToolStripMenuItem
             // 
-            this.tiposDeHabitaciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarEditarToolStripMenuItem,
-            this.verTodoToolStripMenuItem});
             this.tiposDeHabitaciónToolStripMenuItem.Name = "tiposDeHabitaciónToolStripMenuItem";
             this.tiposDeHabitaciónToolStripMenuItem.Size = new System.Drawing.Size(268, 26);
             this.tiposDeHabitaciónToolStripMenuItem.Text = "Tipos de Habitación";
-            // 
-            // agregarEditarToolStripMenuItem
-            // 
-            this.agregarEditarToolStripMenuItem.Name = "agregarEditarToolStripMenuItem";
-            this.agregarEditarToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
-            this.agregarEditarToolStripMenuItem.Text = "Agregar/Editar";
-            // 
-            // verTodoToolStripMenuItem
-            // 
-            this.verTodoToolStripMenuItem.Name = "verTodoToolStripMenuItem";
-            this.verTodoToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
-            this.verTodoToolStripMenuItem.Text = "Ver Todo";
+            this.tiposDeHabitaciónToolStripMenuItem.Click += new System.EventHandler(this.tiposDeHabitaciónToolStripMenuItem_Click);
             // 
             // serviciosToolStripMenuItem
             // 
@@ -222,31 +206,31 @@
             // nuevoEditarToolStripMenuItem
             // 
             this.nuevoEditarToolStripMenuItem.Name = "nuevoEditarToolStripMenuItem";
-            this.nuevoEditarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.nuevoEditarToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.nuevoEditarToolStripMenuItem.Text = "Nuevo/Editar";
             this.nuevoEditarToolStripMenuItem.Click += new System.EventHandler(this.nuevoEditarToolStripMenuItem_Click);
             // 
             // catálogoToolStripMenuItem
             // 
             this.catálogoToolStripMenuItem.Name = "catálogoToolStripMenuItem";
-            this.catálogoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.catálogoToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.catálogoToolStripMenuItem.Text = "Catálogo";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // cargarToolStripMenuItem
             // 
             this.cargarToolStripMenuItem.Name = "cargarToolStripMenuItem";
-            this.cargarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cargarToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.cargarToolStripMenuItem.Text = "Cargar";
             // 
             // promociónToolStripMenuItem
             // 
             this.promociónToolStripMenuItem.Name = "promociónToolStripMenuItem";
-            this.promociónToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.promociónToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.promociónToolStripMenuItem.Text = "Promoción";
             this.promociónToolStripMenuItem.Click += new System.EventHandler(this.promociónToolStripMenuItem_Click_1);
             // 
@@ -264,7 +248,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Hotel App";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -284,7 +268,6 @@
         private System.Windows.Forms.ToolStripMenuItem disponibilidadToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem tiposDeHabitaciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verTodoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem habilitarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deshabilitarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem principalToolStripMenuItem;
@@ -297,7 +280,6 @@
         private System.Windows.Forms.ToolStripMenuItem huespedToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem agregarEditarHabitaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem todasLasHabitacionesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem agregarEditarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoEditarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem catálogoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

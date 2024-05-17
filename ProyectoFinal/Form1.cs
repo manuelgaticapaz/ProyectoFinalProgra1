@@ -37,5 +37,13 @@ namespace ProyectoFinal
             frmTipoDeDocumento frmTipoDeDocumento = new frmTipoDeDocumento();
             frmTipoDeDocumento.ShowDialog();
         }
+
+        
+
+        private void tiposDeHabitaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHabitacion frmHabitacion = new frmHabitacion();
+            frmHabitacion.ShowDialog();
+        }
     }
 }

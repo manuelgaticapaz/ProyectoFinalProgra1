@@ -96,6 +96,7 @@ namespace ProyectoFinal
             this.btnSalir.TabIndex = 21;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnBorrar
             // 
@@ -106,6 +107,7 @@ namespace ProyectoFinal
             this.btnBorrar.TabIndex = 20;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // btnModificar
             // 
@@ -116,6 +118,7 @@ namespace ProyectoFinal
             this.btnModificar.TabIndex = 19;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnGrabar
             // 
@@ -131,7 +134,7 @@ namespace ProyectoFinal
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(183, 214);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(132, 22);
             this.txtDescripcion.TabIndex = 23;
@@ -159,7 +162,7 @@ namespace ProyectoFinal
             // txtFactor
             // 
             this.txtFactor.Location = new System.Drawing.Point(183, 283);
-            this.txtFactor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFactor.Margin = new System.Windows.Forms.Padding(4);
             this.txtFactor.Name = "txtFactor";
             this.txtFactor.Size = new System.Drawing.Size(132, 22);
             this.txtFactor.TabIndex = 25;
@@ -182,7 +185,7 @@ namespace ProyectoFinal
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTipoDeDocumento";
             this.Text = "frmTipoDeDocumento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
