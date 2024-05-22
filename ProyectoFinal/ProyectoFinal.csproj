@@ -66,6 +66,12 @@
     <Compile Include="frmHabitacion.Designer.cs">
       <DependentUpon>frmHabitacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmHabitacionCatalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHabitacionCatalogo.Designer.cs">
+      <DependentUpon>frmHabitacionCatalogo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReserva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,7 @@
       <DependentUpon>frmTipoDeDocumento.cs</DependentUpon>
     </Compile>
     <Compile Include="Habitacion.cs" />
+    <Compile Include="HabitacionCatalogo.cs" />
     <Compile Include="Huesped.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmHabitacion.resx">
       <DependentUpon>frmHabitacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHabitacionCatalogo.resx">
+      <DependentUpon>frmHabitacionCatalogo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReserva.resx">
       <DependentUpon>frmReserva.cs</DependentUpon>

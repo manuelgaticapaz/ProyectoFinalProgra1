@@ -39,8 +39,6 @@
             this.habitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarEditarHabitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.disponibilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tiposDeHabitaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoEditarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,30 +80,30 @@
             // reservacionesToolStripMenuItem1
             // 
             this.reservacionesToolStripMenuItem1.Name = "reservacionesToolStripMenuItem1";
-            this.reservacionesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.reservacionesToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.reservacionesToolStripMenuItem1.Text = "Reservaciones";
             this.reservacionesToolStripMenuItem1.Click += new System.EventHandler(this.reservacionesToolStripMenuItem1_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(145, 6);
             // 
             // checkToolStripMenuItem
             // 
             this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
-            this.checkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.checkToolStripMenuItem.Text = "Check";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(145, 6);
             // 
             // huespedToolStripMenuItem1
             // 
             this.huespedToolStripMenuItem1.Name = "huespedToolStripMenuItem1";
-            this.huespedToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.huespedToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.huespedToolStripMenuItem1.Text = "Huesped";
             this.huespedToolStripMenuItem1.Click += new System.EventHandler(this.huespedToolStripMenuItem1_Click);
             // 
@@ -114,8 +112,6 @@
             this.habitacionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarEditarHabitaciónToolStripMenuItem,
             this.toolStripSeparator4,
-            this.disponibilidadToolStripMenuItem,
-            this.toolStripSeparator3,
             this.tiposDeHabitaciónToolStripMenuItem});
             this.habitacionesToolStripMenuItem.Name = "habitacionesToolStripMenuItem";
             this.habitacionesToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
@@ -126,22 +122,12 @@
             this.agregarEditarHabitaciónToolStripMenuItem.Name = "agregarEditarHabitaciónToolStripMenuItem";
             this.agregarEditarHabitaciónToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.agregarEditarHabitaciónToolStripMenuItem.Text = "Agregar/Editar Habitación";
+            this.agregarEditarHabitaciónToolStripMenuItem.Click += new System.EventHandler(this.agregarEditarHabitaciónToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(209, 6);
-            // 
-            // disponibilidadToolStripMenuItem
-            // 
-            this.disponibilidadToolStripMenuItem.Name = "disponibilidadToolStripMenuItem";
-            this.disponibilidadToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.disponibilidadToolStripMenuItem.Text = "Disponibilidad";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(209, 6);
             // 
             // tiposDeHabitaciónToolStripMenuItem
             // 
@@ -165,31 +151,31 @@
             // nuevoEditarToolStripMenuItem
             // 
             this.nuevoEditarToolStripMenuItem.Name = "nuevoEditarToolStripMenuItem";
-            this.nuevoEditarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuevoEditarToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.nuevoEditarToolStripMenuItem.Text = "Nuevo/Editar";
             this.nuevoEditarToolStripMenuItem.Click += new System.EventHandler(this.nuevoEditarToolStripMenuItem_Click);
             // 
             // catálogoToolStripMenuItem
             // 
             this.catálogoToolStripMenuItem.Name = "catálogoToolStripMenuItem";
-            this.catálogoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.catálogoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.catálogoToolStripMenuItem.Text = "Catálogo";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
             // 
             // cargarToolStripMenuItem
             // 
             this.cargarToolStripMenuItem.Name = "cargarToolStripMenuItem";
-            this.cargarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cargarToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.cargarToolStripMenuItem.Text = "Cargar";
             // 
             // promociónToolStripMenuItem
             // 
             this.promociónToolStripMenuItem.Name = "promociónToolStripMenuItem";
-            this.promociónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.promociónToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.promociónToolStripMenuItem.Text = "Promoción";
             this.promociónToolStripMenuItem.Click += new System.EventHandler(this.promociónToolStripMenuItem_Click_1);
             // 
@@ -223,8 +209,6 @@
         private System.Windows.Forms.ToolStripMenuItem habitacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviciosToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem disponibilidadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem tiposDeHabitaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem principalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reservacionesToolStripMenuItem1;

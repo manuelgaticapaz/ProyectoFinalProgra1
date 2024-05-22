@@ -51,5 +51,11 @@ namespace ProyectoFinal
             frmReserva frmReserva  = new frmReserva();
             frmReserva.ShowDialog();
         }
+
+        private void agregarEditarHabitaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHabitacionCatalogo frmHabitacionCatalogo = new frmHabitacionCatalogo();
+            frmHabitacionCatalogo.ShowDialog();
+        }
     }
 }
