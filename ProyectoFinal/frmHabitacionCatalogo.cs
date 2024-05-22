@@ -143,15 +143,16 @@ namespace ProyectoFinal
             txtDisponibilidad.Visible = false;
             cmbTipoHabitacion.Enabled = true;
             cmbTipoHabitacion.Visible = true;
+            chbDisponibilidad.Enabled = true;
 
             DataTable dti = new DataTable();
             AccesoDatos aDat = new AccesoDatos();
 
             cnx = new SqlConnection(cadenaConexión);
-            SqlCommand cmd = new SqlCommand("sp_catalogo_habitacion", cnx);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@orden", 5);
-            dti = aDat.ObtieneData(cmd);
+            SqlCommand cmdo = new SqlCommand("sp_catalogo_habitacion", cnx);
+            cmdo.CommandType = CommandType.StoredProcedure;
+            cmdo.Parameters.AddWithValue("@orden", 5);
+            dti = aDat.ObtieneData(cmdo);
 
             cmbTipoHabitacion.Items.Clear();
             cmbIDTipoHabitacion.Items.Clear();
