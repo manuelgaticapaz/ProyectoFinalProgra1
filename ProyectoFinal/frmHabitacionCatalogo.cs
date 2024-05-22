@@ -154,8 +154,7 @@ namespace ProyectoFinal
             cmdo.Parameters.AddWithValue("@orden", 5);
             dti = aDat.ObtieneData(cmdo);
 
-            cmbTipoHabitacion.Items.Clear();
-            cmbIDTipoHabitacion.Items.Clear();
+           
 
             cmbTipoHabitacion.DisplayMember = "Tipo Habitación";
             cmbTipoHabitacion.ValueMember = "Id";
@@ -191,6 +190,31 @@ namespace ProyectoFinal
                 MessageBox.Show("Habitacion modificada...");
                 this.Close();
             }
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            if (txtIDHabitacion.Text != "")
+            {
+                HabitacionCatalogo hab1 = new HabitacionCatalogo(int.Parse(txtIDHabitacion.Text), 1, txtNivelHabitacion.Text, txtEntradaHabitacion.Text, chbDisponibilidad.Checked);
+                cnx = new SqlConnection(cadenaConexión);
+                SqlCommand cmd = new SqlCommand("sp_catalogo_habitacion", cnx);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@orden", 2);
+                cmd.Parameters.AddWithValue("@id", hab1.Id);
+
+                cnx.Open();
+                cmd.ExecuteNonQuery();
+                cnx.Close();
+                MessageBox.Show("Habitacion borrada...");
+                this.Close();
+            }
+            
+            }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
