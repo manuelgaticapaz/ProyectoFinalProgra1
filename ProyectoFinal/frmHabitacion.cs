@@ -51,94 +51,117 @@ namespace ProyectoFinal
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            btnGrabar.Text = "Grabar";
-            btnModificar.Enabled = true;
-            btnBorrar.Enabled = true;
-            txtIDHabitacion.Enabled = true;
-            txtNombre.Enabled = true;
-            txtDescripcion.Enabled = true;
-            txtCapacidadP.Enabled = true;
-            txtPrecio.Enabled = true;
-
-
-            if(txtIDHabitacion.Text != "")
+            try
             {
+                btnGrabar.Text = "Grabar";
+                btnModificar.Enabled = true;
+                btnBorrar.Enabled = true;
+                txtIDHabitacion.Enabled = true;
+                txtNombre.Enabled = true;
+                txtDescripcion.Enabled = true;
+                txtCapacidadP.Enabled = true;
+                txtPrecio.Enabled = true;
 
 
-             Habitacion habitacion = new Habitacion(int.Parse(txtIDHabitacion.Text), txtNombre.Text, txtDescripcion.Text, int.Parse(txtCapacidadP.Text), double.Parse(txtPrecio.Text));
-                cnx = new SqlConnection(cadenaConexión);
-                SqlCommand cmd = new SqlCommand("sp_tipo_habitacion", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 0);
-                cmd.Parameters.AddWithValue("@id", habitacion.IdHabitacion);
-                cmd.Parameters.AddWithValue("@nombre", habitacion.Nombre);
-                cmd.Parameters.AddWithValue("@descripcion", habitacion.Descripcion);
-                cmd.Parameters.AddWithValue("@capacidadPersonas", habitacion.CapacidadP);
-                cmd.Parameters.AddWithValue("@precio", habitacion.Precio);
-            
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
-
-                MessageBox.Show("Tipo de habitación grabado...");
-                this.Close();
+                if (txtIDHabitacion.Text != "")
+                {
 
 
+                    Habitacion habitacion = new Habitacion(int.Parse(txtIDHabitacion.Text), txtNombre.Text, txtDescripcion.Text, int.Parse(txtCapacidadP.Text), double.Parse(txtPrecio.Text));
+                    cnx = new SqlConnection(cadenaConexión);
+                    SqlCommand cmd = new SqlCommand("sp_tipo_habitacion", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 0);
+                    cmd.Parameters.AddWithValue("@id", habitacion.IdHabitacion);
+                    cmd.Parameters.AddWithValue("@nombre", habitacion.Nombre);
+                    cmd.Parameters.AddWithValue("@descripcion", habitacion.Descripcion);
+                    cmd.Parameters.AddWithValue("@capacidadPersonas", habitacion.CapacidadP);
+                    cmd.Parameters.AddWithValue("@precio", habitacion.Precio);
+
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
+
+                    MessageBox.Show("Tipo de habitación grabado...");
+                    this.Close();
+
+
+                }
             }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al grabar: " + a.Message);
+            }
+            
 
         }
 
       
         private void btnModificar_Click(object sender, EventArgs e)
         {
-
-            if (txtIDHabitacion.Text != "")
+            try
             {
+                if (txtIDHabitacion.Text != "")
+                {
 
 
-                Habitacion habitacion = new Habitacion(int.Parse(txtIDHabitacion.Text), txtNombre.Text, txtDescripcion.Text, int.Parse(txtCapacidadP.Text), double.Parse(txtPrecio.Text));
-                cnx = new SqlConnection(cadenaConexión);
-                SqlCommand cmd = new SqlCommand("sp_tipo_habitacion", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 1);
-                cmd.Parameters.AddWithValue("@id", habitacion.IdHabitacion);
-                cmd.Parameters.AddWithValue("@nombre", habitacion.Nombre);
-                cmd.Parameters.AddWithValue("@descripcion", habitacion.Descripcion);
-                cmd.Parameters.AddWithValue("@capacidadPersonas", habitacion.CapacidadP);
-                cmd.Parameters.AddWithValue("@precio", habitacion.Precio);
+                    Habitacion habitacion = new Habitacion(int.Parse(txtIDHabitacion.Text), txtNombre.Text, txtDescripcion.Text, int.Parse(txtCapacidadP.Text), double.Parse(txtPrecio.Text));
+                    cnx = new SqlConnection(cadenaConexión);
+                    SqlCommand cmd = new SqlCommand("sp_tipo_habitacion", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 1);
+                    cmd.Parameters.AddWithValue("@id", habitacion.IdHabitacion);
+                    cmd.Parameters.AddWithValue("@nombre", habitacion.Nombre);
+                    cmd.Parameters.AddWithValue("@descripcion", habitacion.Descripcion);
+                    cmd.Parameters.AddWithValue("@capacidadPersonas", habitacion.CapacidadP);
+                    cmd.Parameters.AddWithValue("@precio", habitacion.Precio);
 
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
 
-                MessageBox.Show("Habitación modificada...");
-                this.Close();
+                    MessageBox.Show("Habitación modificada...");
+                    this.Close();
+                }
+
             }
-
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al modificar habitación: " + a.Message);
+            }
+            
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            if (txtIDHabitacion.Text != "")
+            try
             {
-                Habitacion habitacion = new Habitacion(int.Parse(txtIDHabitacion.Text), txtNombre.Text, txtDescripcion.Text, int.Parse(txtCapacidadP.Text), double.Parse(txtPrecio.Text));
-                cnx = new SqlConnection(cadenaConexión);
-                SqlCommand cmd = new SqlCommand("sp_tipo_habitacion", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 2);
-                cmd.Parameters.AddWithValue("@id", habitacion.IdHabitacion);
-                cmd.Parameters.AddWithValue("@nombre", habitacion.Nombre);
-                cmd.Parameters.AddWithValue("@descripcion", habitacion.Descripcion);
-                cmd.Parameters.AddWithValue("@capacidadPersonas", habitacion.CapacidadP);
-                cmd.Parameters.AddWithValue("@precio", habitacion.Precio);
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
+                if (txtIDHabitacion.Text != "")
+                {
+                    Habitacion habitacion = new Habitacion(int.Parse(txtIDHabitacion.Text), txtNombre.Text, txtDescripcion.Text, int.Parse(txtCapacidadP.Text), double.Parse(txtPrecio.Text));
+                    cnx = new SqlConnection(cadenaConexión);
+                    SqlCommand cmd = new SqlCommand("sp_tipo_habitacion", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 2);
+                    cmd.Parameters.AddWithValue("@id", habitacion.IdHabitacion);
+                    cmd.Parameters.AddWithValue("@nombre", habitacion.Nombre);
+                    cmd.Parameters.AddWithValue("@descripcion", habitacion.Descripcion);
+                    cmd.Parameters.AddWithValue("@capacidadPersonas", habitacion.CapacidadP);
+                    cmd.Parameters.AddWithValue("@precio", habitacion.Precio);
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
 
-                MessageBox.Show("Habitación borrada...");
-                this.Close();
+                    MessageBox.Show("Habitación borrada...");
+                    this.Close();
+                }
+
             }
-
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al eliminar habitación: " + a.Message);
+            }
+           
 
 
         }

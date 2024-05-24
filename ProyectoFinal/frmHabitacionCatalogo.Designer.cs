@@ -103,7 +103,7 @@
             // txtIDHabitacion
             // 
             this.txtIDHabitacion.Location = new System.Drawing.Point(136, 12);
-            this.txtIDHabitacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIDHabitacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtIDHabitacion.Name = "txtIDHabitacion";
             this.txtIDHabitacion.Size = new System.Drawing.Size(229, 22);
             this.txtIDHabitacion.TabIndex = 5;
@@ -111,7 +111,7 @@
             // txtNivelHabitacion
             // 
             this.txtNivelHabitacion.Location = new System.Drawing.Point(136, 58);
-            this.txtNivelHabitacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNivelHabitacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtNivelHabitacion.Name = "txtNivelHabitacion";
             this.txtNivelHabitacion.Size = new System.Drawing.Size(229, 22);
             this.txtNivelHabitacion.TabIndex = 6;
@@ -119,7 +119,7 @@
             // txtEntradaHabitacion
             // 
             this.txtEntradaHabitacion.Location = new System.Drawing.Point(519, 58);
-            this.txtEntradaHabitacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEntradaHabitacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtEntradaHabitacion.Name = "txtEntradaHabitacion";
             this.txtEntradaHabitacion.Size = new System.Drawing.Size(229, 22);
             this.txtEntradaHabitacion.TabIndex = 7;
@@ -127,7 +127,7 @@
             // txtTipoHabitacion
             // 
             this.txtTipoHabitacion.Location = new System.Drawing.Point(519, 12);
-            this.txtTipoHabitacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTipoHabitacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtTipoHabitacion.Name = "txtTipoHabitacion";
             this.txtTipoHabitacion.Size = new System.Drawing.Size(229, 22);
             this.txtTipoHabitacion.TabIndex = 8;
@@ -135,7 +135,7 @@
             // txtDisponibilidad
             // 
             this.txtDisponibilidad.Location = new System.Drawing.Point(136, 108);
-            this.txtDisponibilidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDisponibilidad.Margin = new System.Windows.Forms.Padding(4);
             this.txtDisponibilidad.Name = "txtDisponibilidad";
             this.txtDisponibilidad.Size = new System.Drawing.Size(229, 22);
             this.txtDisponibilidad.TabIndex = 9;
@@ -144,7 +144,7 @@
             // 
             this.dgvCatalogoHabitacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCatalogoHabitacion.Location = new System.Drawing.Point(21, 222);
-            this.dgvCatalogoHabitacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvCatalogoHabitacion.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCatalogoHabitacion.Name = "dgvCatalogoHabitacion";
             this.dgvCatalogoHabitacion.RowHeadersWidth = 51;
             this.dgvCatalogoHabitacion.Size = new System.Drawing.Size(728, 242);
@@ -176,7 +176,7 @@
             // 
             this.cmbTipoHabitacion.FormattingEnabled = true;
             this.cmbTipoHabitacion.Location = new System.Drawing.Point(519, 12);
-            this.cmbTipoHabitacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbTipoHabitacion.Margin = new System.Windows.Forms.Padding(4);
             this.cmbTipoHabitacion.Name = "cmbTipoHabitacion";
             this.cmbTipoHabitacion.Size = new System.Drawing.Size(229, 24);
             this.cmbTipoHabitacion.TabIndex = 17;
@@ -185,7 +185,7 @@
             // 
             this.cmbIDTipoHabitacion.FormattingEnabled = true;
             this.cmbIDTipoHabitacion.Location = new System.Drawing.Point(519, 107);
-            this.cmbIDTipoHabitacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbIDTipoHabitacion.Margin = new System.Windows.Forms.Padding(4);
             this.cmbIDTipoHabitacion.Name = "cmbIDTipoHabitacion";
             this.cmbIDTipoHabitacion.Size = new System.Drawing.Size(229, 24);
             this.cmbIDTipoHabitacion.TabIndex = 18;
@@ -195,7 +195,7 @@
             this.chbDisponibilidad.AutoSize = true;
             this.chbDisponibilidad.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chbDisponibilidad.Location = new System.Drawing.Point(16, 110);
-            this.chbDisponibilidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chbDisponibilidad.Margin = new System.Windows.Forms.Padding(4);
             this.chbDisponibilidad.Name = "chbDisponibilidad";
             this.chbDisponibilidad.Size = new System.Drawing.Size(119, 20);
             this.chbDisponibilidad.TabIndex = 19;
@@ -256,9 +256,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.btnNuevo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmHabitacionCatalogo";
             this.Text = "Catalogo Habitaciones";
+            this.Load += new System.EventHandler(this.frmHabitacionCatalogo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCatalogoHabitacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

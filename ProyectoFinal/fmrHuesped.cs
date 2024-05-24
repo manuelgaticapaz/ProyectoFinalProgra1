@@ -57,145 +57,178 @@ namespace ProyectoFinal
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            btnGrabar.Text = "Grabar";
-            btnModificar.Enabled = false;
-            btnBorrar.Enabled = false;
-            txtIDHuesped.Enabled = true;
-            txtNombres.Enabled = true;
-            txtApellidos.Enabled = true;
-            txtnumIdentificacionHuesped.Enabled = true;
-            txtDireccion.Enabled = true;
-            txtEmail.Enabled = true;
-            txtTelefono.Enabled = true;
-            txtTipodeHuesped.Enabled = true;
+            try
+            {
+                btnGrabar.Text = "Grabar";
+                btnModificar.Enabled = false;
+                btnBorrar.Enabled = false;
+                txtIDHuesped.Enabled = true;
+                txtNombres.Enabled = true;
+                txtApellidos.Enabled = true;
+                txtnumIdentificacionHuesped.Enabled = true;
+                txtDireccion.Enabled = true;
+                txtEmail.Enabled = true;
+                txtTelefono.Enabled = true;
+                txtTipodeHuesped.Enabled = true;
 
 
-            if (txtIDHuesped.Text != "")
-            {   
+                if (txtIDHuesped.Text != "")
+                {
 
-                Huesped huesped = new Huesped(txtIDHuesped.Text, txtNombres.Text, txtApellidos.Text, long.Parse(txtnumIdentificacionHuesped.Text), txtDireccion.Text, txtEmail.Text, int.Parse(txtTelefono.Text), txtTipodeHuesped.Text);
-                cnx = new SqlConnection(cadenaConexión);
-                SqlCommand cmd = new SqlCommand("sp_huesped", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 0);
-                cmd.Parameters.AddWithValue("@id", huesped.IdHuesped);
-                cmd.Parameters.AddWithValue("@nombre", huesped.NombresHuesped);
-                cmd.Parameters.AddWithValue("@apellido", huesped.ApellidosHuesped);
-                cmd.Parameters.AddWithValue("@numIdentificacion", huesped.NumIdentificacionHuesped);
-                cmd.Parameters.AddWithValue("@direccion", huesped.DireccionHuesped);
-                cmd.Parameters.AddWithValue("@email", huesped.EmailHuesped);
-                cmd.Parameters.AddWithValue("@telefono", huesped.TelefonoHuesped);
-                cmd.Parameters.AddWithValue("@tipoHuesped", huesped.TipoHuesped);
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
+                    Huesped huesped = new Huesped(txtIDHuesped.Text, txtNombres.Text, txtApellidos.Text, long.Parse(txtnumIdentificacionHuesped.Text), txtDireccion.Text, txtEmail.Text, int.Parse(txtTelefono.Text), txtTipodeHuesped.Text);
+                    cnx = new SqlConnection(cadenaConexión);
+                    SqlCommand cmd = new SqlCommand("sp_huesped", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 0);
+                    cmd.Parameters.AddWithValue("@id", huesped.IdHuesped);
+                    cmd.Parameters.AddWithValue("@nombre", huesped.NombresHuesped);
+                    cmd.Parameters.AddWithValue("@apellido", huesped.ApellidosHuesped);
+                    cmd.Parameters.AddWithValue("@numIdentificacion", huesped.NumIdentificacionHuesped);
+                    cmd.Parameters.AddWithValue("@direccion", huesped.DireccionHuesped);
+                    cmd.Parameters.AddWithValue("@email", huesped.EmailHuesped);
+                    cmd.Parameters.AddWithValue("@telefono", huesped.TelefonoHuesped);
+                    cmd.Parameters.AddWithValue("@tipoHuesped", huesped.TipoHuesped);
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
 
-                MessageBox.Show("Huesped grabado...");
-                this.Close();
+                    MessageBox.Show("Huesped grabado...");
+                    this.Close();
+                }
             }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al grabar el registro: " + a.Message);
+            }
+           
 
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
+
         {
-            btnModificar.Enabled = false;
-            btnBorrar.Enabled = true;
-            txtIDHuesped.Enabled = true;
-            txtNombres.Enabled = true;
-            txtApellidos.Enabled = true;
-            txtnumIdentificacionHuesped.Enabled = true;
-            txtDireccion.Enabled = false;
-            txtEmail.Enabled = false;
-            txtTelefono.Enabled = false;
-            txtTipodeHuesped.Enabled = false;
-
-            if (txtIDHuesped.Text != "")
+            try
             {
-                DataTable dti = new DataTable();
-                AccesoDatos aDat = new AccesoDatos();
+                btnModificar.Enabled = false;
+                btnBorrar.Enabled = true;
+                txtIDHuesped.Enabled = true;
+                txtNombres.Enabled = true;
+                txtApellidos.Enabled = true;
+                txtnumIdentificacionHuesped.Enabled = true;
+                txtDireccion.Enabled = false;
+                txtEmail.Enabled = false;
+                txtTelefono.Enabled = false;
+                txtTipodeHuesped.Enabled = false;
 
-                Huesped huesped = new Huesped(txtIDHuesped.Text, txtNombres.Text, txtApellidos.Text, long.Parse(txtnumIdentificacionHuesped.Text));
-                cnx = new SqlConnection(cadenaConexión);
-                SqlCommand cmd = new SqlCommand("sp_huesped", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 3);
-                cmd.Parameters.AddWithValue("@id", huesped.IdHuesped);
-                cmd.Parameters.AddWithValue("@nombre", huesped.NombresHuesped);
-                cmd.Parameters.AddWithValue("@apellido", huesped.ApellidosHuesped);
-                cmd.Parameters.AddWithValue("@numIdentificacion", huesped.NumIdentificacionHuesped);
-                dti = aDat.ObtieneData(cmd);
-                /*cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();*/
-                dgvBuscaHuesped.DataSource = dti;
+                if (txtIDHuesped.Text != "")
+                {
+                    DataTable dti = new DataTable();
+                    AccesoDatos aDat = new AccesoDatos();
 
+                    Huesped huesped = new Huesped(txtIDHuesped.Text, txtNombres.Text, txtApellidos.Text, long.Parse(txtnumIdentificacionHuesped.Text));
+                    cnx = new SqlConnection(cadenaConexión);
+                    SqlCommand cmd = new SqlCommand("sp_huesped", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 3);
+                    cmd.Parameters.AddWithValue("@id", huesped.IdHuesped);
+                    cmd.Parameters.AddWithValue("@nombre", huesped.NombresHuesped);
+                    cmd.Parameters.AddWithValue("@apellido", huesped.ApellidosHuesped);
+                    cmd.Parameters.AddWithValue("@numIdentificacion", huesped.NumIdentificacionHuesped);
+                    dti = aDat.ObtieneData(cmd);
+                    /*cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();*/
+                    dgvBuscaHuesped.DataSource = dti;
+
+                }
             }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al buscar el huesped: " + a.Message);
+            }
+            
 
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            btnGrabar.Enabled = false;
-            btnModificar.Enabled = true;
-            btnBorrar.Enabled = true;
-            txtIDHuesped.Enabled = false;
-            txtNombres.Enabled = true;
-            txtApellidos.Enabled = true;
-            txtnumIdentificacionHuesped.Enabled = true;
-            txtDireccion.Enabled = true;
-            txtEmail.Enabled = true;
-            txtTelefono.Enabled = true;
-            txtTipodeHuesped.Enabled = true;
-
-
-            if (txtIDHuesped.Text != "")
+            try
             {
-                Huesped huesped = new Huesped(txtIDHuesped.Text, txtNombres.Text, txtApellidos.Text, long.Parse(txtnumIdentificacionHuesped.Text), txtDireccion.Text, txtEmail.Text, int.Parse(txtTelefono.Text), txtTipodeHuesped.Text);
-                cnx = new SqlConnection(cadenaConexión);
-                SqlCommand cmd = new SqlCommand("sp_huesped", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 1);
-                cmd.Parameters.AddWithValue("@id", huesped.IdHuesped);
-                cmd.Parameters.AddWithValue("@nombre", huesped.NombresHuesped);
-                cmd.Parameters.AddWithValue("@apellido", huesped.ApellidosHuesped);
-                cmd.Parameters.AddWithValue("@numIdentificacion", huesped.NumIdentificacionHuesped);
-                cmd.Parameters.AddWithValue("@direccion", huesped.DireccionHuesped);
-                cmd.Parameters.AddWithValue("@email", huesped.EmailHuesped);
-                cmd.Parameters.AddWithValue("@telefono", huesped.TelefonoHuesped);
-                cmd.Parameters.AddWithValue("@tipoHuesped", huesped.TipoHuesped);
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
-                MessageBox.Show("Huesped modificado...");
-                this.Close();
+                btnGrabar.Enabled = false;
+                btnModificar.Enabled = true;
+                btnBorrar.Enabled = true;
+                txtIDHuesped.Enabled = false;
+                txtNombres.Enabled = true;
+                txtApellidos.Enabled = true;
+                txtnumIdentificacionHuesped.Enabled = true;
+                txtDireccion.Enabled = true;
+                txtEmail.Enabled = true;
+                txtTelefono.Enabled = true;
+                txtTipodeHuesped.Enabled = true;
+
+
+                if (txtIDHuesped.Text != "")
+                {
+                    Huesped huesped = new Huesped(txtIDHuesped.Text, txtNombres.Text, txtApellidos.Text, long.Parse(txtnumIdentificacionHuesped.Text), txtDireccion.Text, txtEmail.Text, int.Parse(txtTelefono.Text), txtTipodeHuesped.Text);
+                    cnx = new SqlConnection(cadenaConexión);
+                    SqlCommand cmd = new SqlCommand("sp_huesped", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 1);
+                    cmd.Parameters.AddWithValue("@id", huesped.IdHuesped);
+                    cmd.Parameters.AddWithValue("@nombre", huesped.NombresHuesped);
+                    cmd.Parameters.AddWithValue("@apellido", huesped.ApellidosHuesped);
+                    cmd.Parameters.AddWithValue("@numIdentificacion", huesped.NumIdentificacionHuesped);
+                    cmd.Parameters.AddWithValue("@direccion", huesped.DireccionHuesped);
+                    cmd.Parameters.AddWithValue("@email", huesped.EmailHuesped);
+                    cmd.Parameters.AddWithValue("@telefono", huesped.TelefonoHuesped);
+                    cmd.Parameters.AddWithValue("@tipoHuesped", huesped.TipoHuesped);
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
+                    MessageBox.Show("Huesped modificado...");
+                    this.Close();
+                }
             }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al modificar el huesped: " + a.Message);
+            }
+           
                 
 
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            if (txtIDHuesped.Text != "")
+            try
             {
-                Huesped huesped = new Huesped(txtIDHuesped.Text, txtNombres.Text, txtApellidos.Text, long.Parse(txtnumIdentificacionHuesped.Text), txtDireccion.Text, txtEmail.Text, int.Parse(txtTelefono.Text), txtTipodeHuesped.Text);
-                cnx = new SqlConnection(cadenaConexión);
-                SqlCommand cmd = new SqlCommand("sp_huesped", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 2);
-                cmd.Parameters.AddWithValue("@id", huesped.IdHuesped);
-                cmd.Parameters.AddWithValue("@nombre", huesped.NombresHuesped);
-                cmd.Parameters.AddWithValue("@apellido", huesped.ApellidosHuesped);
-                cmd.Parameters.AddWithValue("@numIdentificacion", huesped.NumIdentificacionHuesped);
-                cmd.Parameters.AddWithValue("@direccion", huesped.DireccionHuesped);
-                cmd.Parameters.AddWithValue("@email", huesped.EmailHuesped);
-                cmd.Parameters.AddWithValue("@telefono", huesped.TelefonoHuesped);
-                cmd.Parameters.AddWithValue("@tipoHuesped", huesped.TipoHuesped);
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
-                MessageBox.Show("Huesped eliminado...");
-                this.Close();
+                if (txtIDHuesped.Text != "")
+                {
+                    Huesped huesped = new Huesped(txtIDHuesped.Text, txtNombres.Text, txtApellidos.Text, long.Parse(txtnumIdentificacionHuesped.Text), txtDireccion.Text, txtEmail.Text, int.Parse(txtTelefono.Text), txtTipodeHuesped.Text);
+                    cnx = new SqlConnection(cadenaConexión);
+                    SqlCommand cmd = new SqlCommand("sp_huesped", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 2);
+                    cmd.Parameters.AddWithValue("@id", huesped.IdHuesped);
+                    cmd.Parameters.AddWithValue("@nombre", huesped.NombresHuesped);
+                    cmd.Parameters.AddWithValue("@apellido", huesped.ApellidosHuesped);
+                    cmd.Parameters.AddWithValue("@numIdentificacion", huesped.NumIdentificacionHuesped);
+                    cmd.Parameters.AddWithValue("@direccion", huesped.DireccionHuesped);
+                    cmd.Parameters.AddWithValue("@email", huesped.EmailHuesped);
+                    cmd.Parameters.AddWithValue("@telefono", huesped.TelefonoHuesped);
+                    cmd.Parameters.AddWithValue("@tipoHuesped", huesped.TipoHuesped);
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
+                    MessageBox.Show("Huesped eliminado...");
+                    this.Close();
+                }
             }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al eliminar al huesped: " + a.Message);
+            }
+           
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -222,6 +255,11 @@ namespace ProyectoFinal
         }
 
         private void txtIDHuesped_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmHuesped_Load(object sender, EventArgs e)
         {
 
         }

@@ -249,7 +249,7 @@
             // 
             this.dgvBuscaHuesped.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBuscaHuesped.Location = new System.Drawing.Point(81, 382);
-            this.dgvBuscaHuesped.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvBuscaHuesped.Margin = new System.Windows.Forms.Padding(4);
             this.dgvBuscaHuesped.Name = "dgvBuscaHuesped";
             this.dgvBuscaHuesped.RowHeadersWidth = 51;
             this.dgvBuscaHuesped.Size = new System.Drawing.Size(625, 249);
@@ -286,6 +286,7 @@
             this.Name = "frmHuesped";
             this.Text = "Huesped";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.frmHuesped_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscaHuesped)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

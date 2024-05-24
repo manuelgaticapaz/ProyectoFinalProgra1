@@ -189,6 +189,7 @@ namespace ProyectoFinal
             this.Name = "frmTipoDeDocumento";
             this.Text = "frmTipoDeDocumento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmTipoDeDocumento_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

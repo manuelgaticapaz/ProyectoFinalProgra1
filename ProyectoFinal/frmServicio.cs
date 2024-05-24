@@ -48,42 +48,49 @@ namespace ProyectoFinal
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-
-
-            btnGrabar.Text = "Grabar";
-            btnModificar.Enabled = true;
-            btnBorrar.Enabled = true;
-            txtIDServicios.Enabled = true;
-            txtDescripcion.Enabled = true;
-            txtCosto.Enabled = true;
-            txtHoraInicio.Enabled = true;
-            txtHoraFinal.Enabled = true;
-            txtDisponibilidad.Enabled = true;
-            txtReservas.Enabled = true;
-
-            if (txtIDServicios.Text != "")
+            try
             {
-                Servicio servicio = new Servicio(txtIDServicios.Text, txtDescripcion.Text, double.Parse(txtCosto.Text), txtHoraInicio.Text, txtHoraFinal.Text, txtDisponibilidad.Text, txtReservas.Text);
-                cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
-                SqlCommand cmd = new SqlCommand("sp_servicio", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 0);
+                btnGrabar.Text = "Grabar";
+                btnModificar.Enabled = true;
+                btnBorrar.Enabled = true;
+                txtIDServicios.Enabled = true;
+                txtDescripcion.Enabled = true;
+                txtCosto.Enabled = true;
+                txtHoraInicio.Enabled = true;
+                txtHoraFinal.Enabled = true;
+                txtDisponibilidad.Enabled = true;
+                txtReservas.Enabled = true;
 
-                cmd.Parameters.AddWithValue("@id", servicio.IdServicio);
-                cmd.Parameters.AddWithValue("@descripcion", servicio.Descripcion);
-                cmd.Parameters.AddWithValue("@valor", servicio.Valor);
-                cmd.Parameters.AddWithValue("@horaInicio", servicio.Horainicio);
-                cmd.Parameters.AddWithValue("@horaFinal", servicio.Horafinal);
-                cmd.Parameters.AddWithValue("@disponibilidad", servicio.Disponibilidad);
-                cmd.Parameters.AddWithValue("@reservas", servicio.Reservas);
+                if (txtIDServicios.Text != "")
+                {
+                    Servicio servicio = new Servicio(txtIDServicios.Text, txtDescripcion.Text, double.Parse(txtCosto.Text), txtHoraInicio.Text, txtHoraFinal.Text, txtDisponibilidad.Text, txtReservas.Text);
+                    cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
+                    SqlCommand cmd = new SqlCommand("sp_servicio", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 0);
 
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
+                    cmd.Parameters.AddWithValue("@id", servicio.IdServicio);
+                    cmd.Parameters.AddWithValue("@descripcion", servicio.Descripcion);
+                    cmd.Parameters.AddWithValue("@valor", servicio.Valor);
+                    cmd.Parameters.AddWithValue("@horaInicio", servicio.Horainicio);
+                    cmd.Parameters.AddWithValue("@horaFinal", servicio.Horafinal);
+                    cmd.Parameters.AddWithValue("@disponibilidad", servicio.Disponibilidad);
+                    cmd.Parameters.AddWithValue("@reservas", servicio.Reservas);
 
-                MessageBox.Show("Servicio grabado...");
-                this.Close();
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
+
+                    MessageBox.Show("Servicio grabado...");
+                    this.Close();
+                }
             }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al grabar servicio: " + a.Message);
+            }
+
+            
         }
         private void frmServicio_Loadobject(object sender, EventArgs e)
         {
@@ -92,58 +99,74 @@ namespace ProyectoFinal
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (txtIDServicios.Text != "")
+            try
             {
-                Servicio servicio = new Servicio(txtIDServicios.Text, txtDescripcion.Text, double.Parse(txtCosto.Text), txtHoraInicio.Text, txtHoraFinal.Text, txtDisponibilidad.Text, txtReservas.Text);
-                cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
-                SqlCommand cmd = new SqlCommand("sp_servicio", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 1);
+                if (txtIDServicios.Text != "")
+                {
+                    Servicio servicio = new Servicio(txtIDServicios.Text, txtDescripcion.Text, double.Parse(txtCosto.Text), txtHoraInicio.Text, txtHoraFinal.Text, txtDisponibilidad.Text, txtReservas.Text);
+                    cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
+                    SqlCommand cmd = new SqlCommand("sp_servicio", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 1);
 
-                cmd.Parameters.AddWithValue("@id", servicio.IdServicio);
-                cmd.Parameters.AddWithValue("@descripcion", servicio.Descripcion);
-                cmd.Parameters.AddWithValue("@valor", servicio.Valor);
-                cmd.Parameters.AddWithValue("@horaInicio", servicio.Horainicio);
-                cmd.Parameters.AddWithValue("@horaFinal", servicio.Horafinal);
-                cmd.Parameters.AddWithValue("@disponibilidad", servicio.Disponibilidad);
-                cmd.Parameters.AddWithValue("@reservas", servicio.Reservas);
+                    cmd.Parameters.AddWithValue("@id", servicio.IdServicio);
+                    cmd.Parameters.AddWithValue("@descripcion", servicio.Descripcion);
+                    cmd.Parameters.AddWithValue("@valor", servicio.Valor);
+                    cmd.Parameters.AddWithValue("@horaInicio", servicio.Horainicio);
+                    cmd.Parameters.AddWithValue("@horaFinal", servicio.Horafinal);
+                    cmd.Parameters.AddWithValue("@disponibilidad", servicio.Disponibilidad);
+                    cmd.Parameters.AddWithValue("@reservas", servicio.Reservas);
 
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
 
-                MessageBox.Show("Servicio modificado...");
-                this.Close();
+                    MessageBox.Show("Servicio modificado...");
+                    this.Close();
+                }
             }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al modificar servicio: " + a.Message);
+            }
+           
 
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            if (txtIDServicios.Text != "")
+            try
             {
-                Servicio servicio = new Servicio(txtIDServicios.Text, txtDescripcion.Text, double.Parse(txtCosto.Text), txtHoraInicio.Text, txtHoraFinal.Text, txtDisponibilidad.Text, txtReservas.Text);
-                cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
-                SqlCommand cmd = new SqlCommand("sp_servicio", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 2);
+                if (txtIDServicios.Text != "")
+                {
+                    Servicio servicio = new Servicio(txtIDServicios.Text, txtDescripcion.Text, double.Parse(txtCosto.Text), txtHoraInicio.Text, txtHoraFinal.Text, txtDisponibilidad.Text, txtReservas.Text);
+                    cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
+                    SqlCommand cmd = new SqlCommand("sp_servicio", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 2);
 
-                cmd.Parameters.AddWithValue("@id", servicio.IdServicio);
-                cmd.Parameters.AddWithValue("@descripcion", servicio.Descripcion);
-                cmd.Parameters.AddWithValue("@valor", servicio.Valor);
-                cmd.Parameters.AddWithValue("@horaInicio", servicio.Horainicio);
-                cmd.Parameters.AddWithValue("@horaFinal", servicio.Horafinal);
-                cmd.Parameters.AddWithValue("@disponibilidad", servicio.Disponibilidad);
-                cmd.Parameters.AddWithValue("@reservas", servicio.Reservas);
+                    cmd.Parameters.AddWithValue("@id", servicio.IdServicio);
+                    cmd.Parameters.AddWithValue("@descripcion", servicio.Descripcion);
+                    cmd.Parameters.AddWithValue("@valor", servicio.Valor);
+                    cmd.Parameters.AddWithValue("@horaInicio", servicio.Horainicio);
+                    cmd.Parameters.AddWithValue("@horaFinal", servicio.Horafinal);
+                    cmd.Parameters.AddWithValue("@disponibilidad", servicio.Disponibilidad);
+                    cmd.Parameters.AddWithValue("@reservas", servicio.Reservas);
 
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
 
-                MessageBox.Show("Servicio eliminado...");
-                this.Close();
+                    MessageBox.Show("Servicio eliminado...");
+                    this.Close();
 
+                }
             }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al eliminar servicio: " + a.Message);
+            }
+           
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

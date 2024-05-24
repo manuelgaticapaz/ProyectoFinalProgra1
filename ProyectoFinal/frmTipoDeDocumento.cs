@@ -31,93 +31,123 @@ namespace ProyectoFinal
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            
-            btnGrabar.Text = "Grabar";
-            btnModificar.Enabled = true;
-            btnBorrar.Enabled = true;
-            txtID.Enabled = true;
-            txtNombres.Enabled = true;
-            txtDescripcion.Enabled = true;
-            txtFactor.Enabled = true;
-
-            if(txtID.Text != "")
+            try
             {
-                TipodeDocumento tipoDeDocumento = new TipodeDocumento(txtID.Text, txtNombres.Text, txtDescripcion.Text, txtFactor.Text);
-                cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
-                SqlCommand cmd = new SqlCommand("sp_tipo_documento", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 0);
 
-                cmd.Parameters.AddWithValue("@id", tipoDeDocumento.IdTDoc);
-                cmd.Parameters.AddWithValue("@nombre", tipoDeDocumento.NombreTDoc);
-                cmd.Parameters.AddWithValue("@descripcion", tipoDeDocumento.DescripcionTDoc);
-                cmd.Parameters.AddWithValue("@factor", tipoDeDocumento.FactorTDoc);
+                btnGrabar.Text = "Grabar";
+                btnModificar.Enabled = true;
+                btnBorrar.Enabled = true;
+                txtID.Enabled = true;
+                txtNombres.Enabled = true;
+                txtDescripcion.Enabled = true;
+                txtFactor.Enabled = true;
+
+                if (txtID.Text != "")
+                {
+                    TipodeDocumento tipoDeDocumento = new TipodeDocumento(txtID.Text, txtNombres.Text, txtDescripcion.Text, txtFactor.Text);
+                    cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
+                    SqlCommand cmd = new SqlCommand("sp_tipo_documento", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 0);
+
+                    cmd.Parameters.AddWithValue("@id", tipoDeDocumento.IdTDoc);
+                    cmd.Parameters.AddWithValue("@nombre", tipoDeDocumento.NombreTDoc);
+                    cmd.Parameters.AddWithValue("@descripcion", tipoDeDocumento.DescripcionTDoc);
+                    cmd.Parameters.AddWithValue("@factor", tipoDeDocumento.FactorTDoc);
 
 
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
 
-                MessageBox.Show("Tipo de documento grabado...");
-                this.Close();
+                    MessageBox.Show("Tipo de documento grabado...");
+                    this.Close();
+                }
             }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al eliminar documento: " + a.Message);
+            }
+
 
             
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (txtID.Text != "")
+            try
             {
-                TipodeDocumento tipoDeDocumento = new TipodeDocumento(txtID.Text, txtNombres.Text, txtDescripcion.Text, txtFactor.Text);
-                cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
-                SqlCommand cmd = new SqlCommand("sp_tipo_documento", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 1);
+                if (txtID.Text != "")
+                {
+                    TipodeDocumento tipoDeDocumento = new TipodeDocumento(txtID.Text, txtNombres.Text, txtDescripcion.Text, txtFactor.Text);
+                    cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
+                    SqlCommand cmd = new SqlCommand("sp_tipo_documento", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 1);
 
-                cmd.Parameters.AddWithValue("@id", tipoDeDocumento.IdTDoc);
-                cmd.Parameters.AddWithValue("@nombre", tipoDeDocumento.NombreTDoc);
-                cmd.Parameters.AddWithValue("@descripcion", tipoDeDocumento.DescripcionTDoc);
-                cmd.Parameters.AddWithValue("@factor", tipoDeDocumento.FactorTDoc);
+                    cmd.Parameters.AddWithValue("@id", tipoDeDocumento.IdTDoc);
+                    cmd.Parameters.AddWithValue("@nombre", tipoDeDocumento.NombreTDoc);
+                    cmd.Parameters.AddWithValue("@descripcion", tipoDeDocumento.DescripcionTDoc);
+                    cmd.Parameters.AddWithValue("@factor", tipoDeDocumento.FactorTDoc);
 
 
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
 
-                MessageBox.Show("Tipo de documento modificado...");
-                this.Close();
+                    MessageBox.Show("Tipo de documento modificado...");
+                    this.Close();
+                }
+
             }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al modificar documento: " + a.Message);
+            }
+           
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            if (txtID.Text != "")
+            try
             {
-                TipodeDocumento tipoDeDocumento = new TipodeDocumento(txtID.Text, txtNombres.Text, txtDescripcion.Text, txtFactor.Text);
-                cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
-                SqlCommand cmd = new SqlCommand("sp_tipo_documento", cnx);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@orden", 2);
+                if (txtID.Text != "")
+                {
+                    TipodeDocumento tipoDeDocumento = new TipodeDocumento(txtID.Text, txtNombres.Text, txtDescripcion.Text, txtFactor.Text);
+                    cnx = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n");
+                    SqlCommand cmd = new SqlCommand("sp_tipo_documento", cnx);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@orden", 2);
 
-                cmd.Parameters.AddWithValue("@id", tipoDeDocumento.IdTDoc);
-                cmd.Parameters.AddWithValue("@nombre", tipoDeDocumento.NombreTDoc);
-                cmd.Parameters.AddWithValue("@descripcion", tipoDeDocumento.DescripcionTDoc);
-                cmd.Parameters.AddWithValue("@factor", tipoDeDocumento.FactorTDoc);
+                    cmd.Parameters.AddWithValue("@id", tipoDeDocumento.IdTDoc);
+                    cmd.Parameters.AddWithValue("@nombre", tipoDeDocumento.NombreTDoc);
+                    cmd.Parameters.AddWithValue("@descripcion", tipoDeDocumento.DescripcionTDoc);
+                    cmd.Parameters.AddWithValue("@factor", tipoDeDocumento.FactorTDoc);
 
 
-                cnx.Open();
-                cmd.ExecuteNonQuery();
-                cnx.Close();
+                    cnx.Open();
+                    cmd.ExecuteNonQuery();
+                    cnx.Close();
 
-                MessageBox.Show("Tipo de documento eliminado...");
-                this.Close();
+                    MessageBox.Show("Tipo de documento eliminado...");
+                    this.Close();
+                }
             }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al eliminar documento: " + a.Message);
+            }
+            
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmTipoDeDocumento_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
