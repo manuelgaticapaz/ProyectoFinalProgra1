@@ -25,7 +25,6 @@ namespace ProyectoFinal
         {
             if (dgvReservaciones.SelectedRows.Count > 0)
             {
-                // Obtener la fila seleccionada
 
                 DataGridViewRow row = dgvReservaciones.SelectedRows[0];
                 //txtIDHabitacion.Text = row.Cells["Id"].Value.ToString();
