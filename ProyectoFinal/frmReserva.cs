@@ -20,24 +20,25 @@ namespace ProyectoFinal
         public string cadenaConexión = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n";
         //Manuel
         //public string cadenaConexión = "Data Source=Kensi\\MSSQLSERVER01;Initial Catalog=proyectoP1;Integrated Security=True";
+        int noches = 0;
+        double precioNoche = 0;
+        double precioTotal = 0;
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvReservaciones.SelectedRows.Count > 0)
             {
-
+                TimeSpan dif = DateTime.Parse(dtpSalida.Text) - DateTime.Parse(dtpIngreso.Text); 
+                int dias = dif.Days + 1;
+                noches = dias;
                 DataGridViewRow row = dgvReservaciones.SelectedRows[0];
-                //txtIDHabitacion.Text = row.Cells["Id"].Value.ToString();
-                //txtTipoHabitacion.Text = row.Cells["Tipo Habitación"].Value.ToString();
-                //txtNivelHabitacion.Text = row.Cells["Nivel"].Value.ToString();
-                //txtEntradaHabitacion.Text = row.Cells["Entrada Habitación"].Value.ToString();
-                //txtDisponibilidad.Text = row.Cells["Disponible"].Value.ToString();
-                //if (txtDisponibilidad.Text == "True")
-                //{
-                //    chbDisponibilidad.Checked = true;
-
-                //}
-                //else { chbDisponibilidad.Checked = false; }
+                txtNivel.Text = row.Cells["Nivel"].Value.ToString();
+                txtIdHabitacion.Text = row.Cells["Id"].Value.ToString();
+                txtCapacidad.Text = row.Cells["Capacidad"].Value.ToString();
+                txtNombrePuerta.Text = row.Cells["Nombre Puerta"].Value.ToString();
+                lblPrecioEstadia.Text = "Q." + Math.Round((double.Parse(row.Cells["Precio"].Value.ToString()) *dias),2);
+                precioTotal = Math.Round((double.Parse(row.Cells["Precio"].Value.ToString()) * dias), 2);
+                precioNoche = precioTotal / noches;
             }
         }
 
@@ -47,6 +48,11 @@ namespace ProyectoFinal
             cmbIdHuesped.Enabled = false;
             DataTable dti = new DataTable();
             AccesoDatos aDat = new AccesoDatos();
+            txtNivel.Enabled = false;
+            txtIdHabitacion.Enabled = false;
+            txtCapacidad.Enabled = false;
+            txtNombrePuerta.Enabled = false;    
+
 
             cnx = new SqlConnection(cadenaConexión);
             SqlCommand cmd = new SqlCommand("sp_reservacion", cnx);
@@ -73,22 +79,62 @@ namespace ProyectoFinal
 
         private void btnVerDisponibilidad_Click(object sender, EventArgs e)
         {
-            DataTable dti = new DataTable();
-            AccesoDatos aDat = new AccesoDatos();
+            try 
+            {
+                TimeSpan dif = DateTime.Parse(dtpSalida.Text) - DateTime.Parse(dtpIngreso.Text);
+                int dias = dif.Days + 1;
+                noches = dias;
+                DataTable dti = new DataTable();
+                AccesoDatos aDat = new AccesoDatos();
+                Reservacion resv1 = new Reservacion(0, cmbIdHuesped.Text, int.Parse(txtCantidadPersonas.Text), dtpIngreso.Value, dtpSalida.Value);
+                cnx = new SqlConnection(cadenaConexión);
+                SqlCommand cmd = new SqlCommand("sp_reservacion", cnx);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@orden", 4);
+                cmd.Parameters.AddWithValue("@cantPersonas", resv1.CantidadPersonas);
+                cmd.Parameters.AddWithValue("@fechaIngreso", resv1.FechaInicio);
+                cmd.Parameters.AddWithValue("@fechaSalida", resv1.FechaFinal);
+                dti = aDat.ObtieneData(cmd);
+                dgvReservaciones.DataSource = dti;
+                dgvReservaciones.SelectionChanged += dataGridView1_SelectionChanged;
+                lblCantidadNoches.Text = noches.ToString();
 
-            Reservacion resv1 = new Reservacion(0, cmbIdHuesped.Text, int.Parse(txtCantidadPersonas.Text),dtpIngreso.Value, dtpSalida.Value);
-            cnx = new SqlConnection(cadenaConexión);
-            SqlCommand cmd = new SqlCommand("sp_reservacion", cnx);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@orden", 4);
-            cmd.Parameters.AddWithValue("@cantPersonas", resv1.CantidadPersonas);
-            cmd.Parameters.AddWithValue("@fechaIngreso",resv1.FechaInicio);
-            cmd.Parameters.AddWithValue("@fechaSalida", resv1.FechaFinal);
-            dti = aDat.ObtieneData(cmd);
-            dgvReservaciones.DataSource = dti;
-            dgvReservaciones.SelectionChanged += dataGridView1_SelectionChanged;
 
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al ver disponibilidad: " + a.Message);
+            }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                Reservacion resv1 = new Reservacion(0, cmbIdHuesped.Text, int.Parse(txtIdHabitacion.Text),int.Parse(txtCantidadPersonas.Text), dtpIngreso.Value, dtpSalida.Value, noches, precioNoche, precioTotal);
+                cnx = new SqlConnection(cadenaConexión);
+                SqlCommand cmd = new SqlCommand("sp_reservacion", cnx);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@orden", 0);
+                cmd.Parameters.AddWithValue("@idHuesped", resv1.IdHuesped);
+                cmd.Parameters.AddWithValue("@idHabitacion", resv1.IdHabitacion);
+                cmd.Parameters.AddWithValue("@fechaIngreso", resv1.FechaInicio);
+                cmd.Parameters.AddWithValue("@fechaSalida", resv1.FechaFinal);
+                cmd.Parameters.AddWithValue("@noches", resv1.CantNoches);
+                cmd.Parameters.AddWithValue("@precioNoche", resv1.Precio); 
+                cmd.Parameters.AddWithValue("@precioTotal", resv1.PrecioFinal);  
+                cnx.Open();                                                        
+                cmd.ExecuteNonQuery();                                             
+                cnx.Close();                                                       
+                                                                                   
+                MessageBox.Show("Reservación generada...");                             
+                this.Close();                                                      
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al generar reservación: " + a.Message);
+            }
         }
     }
 }
