@@ -20,8 +20,27 @@ namespace ProyectoFinal
         public string cadenaConexión = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n";
         //Manuel
         //public string cadenaConexión = "Data Source=Kensi\\MSSQLSERVER01;Initial Catalog=proyectoP1;Integrated Security=True";
-        private BindingSource bindingSource1;
-        private BindingSource bindingSource2;
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvReservaciones.SelectedRows.Count > 0)
+            {
+                // Obtener la fila seleccionada
+
+                DataGridViewRow row = dgvReservaciones.SelectedRows[0];
+                //txtIDHabitacion.Text = row.Cells["Id"].Value.ToString();
+                //txtTipoHabitacion.Text = row.Cells["Tipo Habitación"].Value.ToString();
+                //txtNivelHabitacion.Text = row.Cells["Nivel"].Value.ToString();
+                //txtEntradaHabitacion.Text = row.Cells["Entrada Habitación"].Value.ToString();
+                //txtDisponibilidad.Text = row.Cells["Disponible"].Value.ToString();
+                //if (txtDisponibilidad.Text == "True")
+                //{
+                //    chbDisponibilidad.Checked = true;
+
+                //}
+                //else { chbDisponibilidad.Checked = false; }
+            }
+        }
 
         public frmReserva()
         {
@@ -53,49 +72,24 @@ namespace ProyectoFinal
 
         }
 
+        private void btnVerDisponibilidad_Click(object sender, EventArgs e)
+        {
+            DataTable dti = new DataTable();
+            AccesoDatos aDat = new AccesoDatos();
 
-        //private void InitializeBindingSources()
-        //{
-        //    DataTable dti = new DataTable();
-        //    AccesoDatos aDat = new AccesoDatos();
-
-        //    cnx = new SqlConnection(cadenaConexión);
-        //    SqlCommand cmd = new SqlCommand("sp_reservacion", cnx);
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    cmd.Parameters.AddWithValue("@orden", 5);
-        //    dti = aDat.ObtieneData(cmd);
-
-        //    bindingSource1 = new BindingSource();
-        //    bindingSource1.DataSource = dti;
-
-        //    bindingSource2 = new BindingSource();
-        //    bindingSource2.DataSource = dti;
-        //}
-        //private void ComboBox1_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (!string.IsNullOrEmpty(cmbNombreReserva.Text))
-        //    {
-        //        bindingSource1.Filter = $"Nombre LIKE '%{cmbNombreReserva.Text}%'";
-        //    }
-        //    else
-        //    {
-        //        bindingSource1.RemoveFilter();
-        //    }
-        //}
-
-        //private void ComboBox2_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (!string.IsNullOrEmpty(cmbIDReserva.Text))
-        //    {
-        //        bindingSource2.Filter = $"Identificación LIKE '%{cmbIDReserva.Text}%'";
-        //    }
-        //    else
-        //    {
-        //        bindingSource2.RemoveFilter();
-        //    }
-        //}
+            Reservacion resv1 = new Reservacion(0, cmbIdHuesped.Text, int.Parse(txtCantidadPersonas.Text),dtpIngreso.Value, dtpSalida.Value);
+            cnx = new SqlConnection(cadenaConexión);
+            SqlCommand cmd = new SqlCommand("sp_reservacion", cnx);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@orden", 4);
+            cmd.Parameters.AddWithValue("@cantPersonas", resv1.CantidadPersonas);
+            cmd.Parameters.AddWithValue("@fechaIngreso",resv1.FechaInicio);
+            cmd.Parameters.AddWithValue("@fechaSalida", resv1.FechaFinal);
+            dti = aDat.ObtieneData(cmd);
+            dgvReservaciones.DataSource = dti;
+            dgvReservaciones.SelectionChanged += dataGridView1_SelectionChanged;
 
 
-
+        }
     }
 }

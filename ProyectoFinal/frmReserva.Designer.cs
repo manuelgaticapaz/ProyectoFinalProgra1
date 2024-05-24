@@ -41,6 +41,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dtpIngreso = new System.Windows.Forms.DateTimePicker();
             this.dtpSalida = new System.Windows.Forms.DateTimePicker();
+            this.btnVerDisponibilidad = new System.Windows.Forms.Button();
+            this.dgvReservaciones = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservaciones)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -151,11 +154,32 @@
             this.dtpSalida.Size = new System.Drawing.Size(203, 20);
             this.dtpSalida.TabIndex = 17;
             // 
+            // btnVerDisponibilidad
+            // 
+            this.btnVerDisponibilidad.Location = new System.Drawing.Point(259, 151);
+            this.btnVerDisponibilidad.Name = "btnVerDisponibilidad";
+            this.btnVerDisponibilidad.Size = new System.Drawing.Size(123, 23);
+            this.btnVerDisponibilidad.TabIndex = 18;
+            this.btnVerDisponibilidad.Text = "Ver Disponibilidad";
+            this.btnVerDisponibilidad.UseVisualStyleBackColor = true;
+            this.btnVerDisponibilidad.Click += new System.EventHandler(this.btnVerDisponibilidad_Click);
+            // 
+            // dgvReservaciones
+            // 
+            this.dgvReservaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReservaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReservaciones.Location = new System.Drawing.Point(26, 195);
+            this.dgvReservaciones.Name = "dgvReservaciones";
+            this.dgvReservaciones.Size = new System.Drawing.Size(604, 150);
+            this.dgvReservaciones.TabIndex = 19;
+            // 
             // frmReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(673, 597);
+            this.Controls.Add(this.dgvReservaciones);
+            this.Controls.Add(this.btnVerDisponibilidad);
             this.Controls.Add(this.dtpSalida);
             this.Controls.Add(this.dtpIngreso);
             this.Controls.Add(this.label7);
@@ -171,6 +195,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmReserva";
             this.Text = "Reservación";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,5 +216,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtpIngreso;
         private System.Windows.Forms.DateTimePicker dtpSalida;
+        private System.Windows.Forms.Button btnVerDisponibilidad;
+        private System.Windows.Forms.DataGridView dgvReservaciones;
     }
 }
