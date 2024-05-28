@@ -80,30 +80,31 @@
             // reservacionesToolStripMenuItem1
             // 
             this.reservacionesToolStripMenuItem1.Name = "reservacionesToolStripMenuItem1";
-            this.reservacionesToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.reservacionesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.reservacionesToolStripMenuItem1.Text = "Reservaciones";
             this.reservacionesToolStripMenuItem1.Click += new System.EventHandler(this.reservacionesToolStripMenuItem1_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // checkToolStripMenuItem
             // 
             this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
-            this.checkToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.checkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkToolStripMenuItem.Text = "Check";
+            this.checkToolStripMenuItem.Click += new System.EventHandler(this.checkToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
             // 
             // huespedToolStripMenuItem1
             // 
             this.huespedToolStripMenuItem1.Name = "huespedToolStripMenuItem1";
-            this.huespedToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.huespedToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.huespedToolStripMenuItem1.Text = "Huesped";
             this.huespedToolStripMenuItem1.Click += new System.EventHandler(this.huespedToolStripMenuItem1_Click);
             // 

@@ -17,28 +17,36 @@ namespace ProyectoFinal
 
         public static SqlConnection cnx;
         ////Joaquin
-        public string cadenaConexión = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n";
+        //public string cadenaConexión = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Proyecto X;Data Source=DESKTOP-TAVF458\\SQLEXPRESS\r\n";
         //Manuel
-        //public string cadenaConexión = "Data Source=Kensi\\MSSQLSERVER01;Initial Catalog=proyectoP1;Integrated Security=True";
+        public string cadenaConexión = "Data Source=Kensi\\MSSQLSERVER01;Initial Catalog=proyectoP1;Integrated Security=True";
         int noches = 0;
         double precioNoche = 0;
         double precioTotal = 0;
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvReservaciones.SelectedRows.Count > 0)
+            try
             {
-                TimeSpan dif = DateTime.Parse(dtpSalida.Text) - DateTime.Parse(dtpIngreso.Text); 
-                int dias = dif.Days + 1;
-                noches = dias;
-                DataGridViewRow row = dgvReservaciones.SelectedRows[0];
-                txtNivel.Text = row.Cells["Nivel"].Value.ToString();
-                txtIdHabitacion.Text = row.Cells["Id"].Value.ToString();
-                txtCapacidad.Text = row.Cells["Capacidad"].Value.ToString();
-                txtNombrePuerta.Text = row.Cells["Nombre Puerta"].Value.ToString();
-                lblPrecioEstadia.Text = "Q." + Math.Round((double.Parse(row.Cells["Precio"].Value.ToString()) *dias),2);
-                precioTotal = Math.Round((double.Parse(row.Cells["Precio"].Value.ToString()) * dias), 2);
-                precioNoche = precioTotal / noches;
+                if (dgvReservaciones.SelectedRows.Count > 0)
+                {
+                    TimeSpan dif = DateTime.Parse(dtpSalida.Text) - DateTime.Parse(dtpIngreso.Text);
+                    int dias = dif.Days + 1;
+                    noches = dias;
+                    DataGridViewRow row = dgvReservaciones.SelectedRows[0];
+                    txtNivel.Text = row.Cells["Nivel"].Value.ToString();
+                    txtIdHabitacion.Text = row.Cells["Id"].Value.ToString();
+                    txtCapacidad.Text = row.Cells["Capacidad"].Value.ToString();
+                    txtNombrePuerta.Text = row.Cells["Nombre Puerta"].Value.ToString();
+                    lblPrecioEstadia.Text = "Q." + Math.Round((double.Parse(row.Cells["Precio"].Value.ToString()) * dias), 2);
+                    precioTotal = Math.Round((double.Parse(row.Cells["Precio"].Value.ToString()) * dias), 2);
+                    precioNoche = precioTotal / noches;
+                }
+
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show("Error al ver disponibilidad: " + a.Message);
             }
         }
 
@@ -79,6 +87,11 @@ namespace ProyectoFinal
 
         private void btnVerDisponibilidad_Click(object sender, EventArgs e)
         {
+            cmbNombreReserva.Enabled = false;
+            cmbIDReserva.Enabled = false;
+            txtCantidadPersonas.Enabled = false;
+            dtpIngreso.Enabled = false;
+            dtpSalida.Enabled = false;
             try 
             {
                 TimeSpan dif = DateTime.Parse(dtpSalida.Text) - DateTime.Parse(dtpIngreso.Text);

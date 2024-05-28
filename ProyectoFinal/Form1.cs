@@ -57,5 +57,11 @@ namespace ProyectoFinal
             frmHabitacionCatalogo frmHabitacionCatalogo = new frmHabitacionCatalogo();
             frmHabitacionCatalogo.ShowDialog();
         }
+
+        private void checkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCheck frmCheck = new frmCheck();
+            frmCheck.ShowDialog();
+        }
     }
 }
