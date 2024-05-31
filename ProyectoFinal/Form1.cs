@@ -63,5 +63,22 @@ namespace ProyectoFinal
             frmCheck frmCheck = new frmCheck();
             frmCheck.ShowDialog();
         }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cargarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCargarServicio frmCargarServicio = new frmCargarServicio();
+            frmCargarServicio.ShowDialog();
+        }
+
+        private void facturaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFacturacion frmFacturacion = new frmFacturacion();
+            frmFacturacion.ShowDialog();
+        }
     }
 }

@@ -33,12 +33,23 @@
             this.cmbNombreHuesped = new System.Windows.Forms.ComboBox();
             this.cmbIdHuesped = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmbIdReservación = new System.Windows.Forms.ComboBox();
+            this.cmbIdReservacion = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.chkCheckIn = new System.Windows.Forms.CheckBox();
             this.btnEjecutarCheckIn = new System.Windows.Forms.Button();
             this.dgvCheckIn = new System.Windows.Forms.DataGridView();
+            this.dgvCheckOut = new System.Windows.Forms.DataGridView();
+            this.btnEjecutarCheckOut = new System.Windows.Forms.Button();
+            this.chkCheckOut = new System.Windows.Forms.CheckBox();
+            this.cmbIdReservacionOut = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbIdHuespedOut = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbNombreHuespedOut = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCheckIn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckOut)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -84,13 +95,13 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Identificación Huesped:";
             // 
-            // cmbIdReservación
+            // cmbIdReservacion
             // 
-            this.cmbIdReservación.FormattingEnabled = true;
-            this.cmbIdReservación.Location = new System.Drawing.Point(783, 45);
-            this.cmbIdReservación.Name = "cmbIdReservación";
-            this.cmbIdReservación.Size = new System.Drawing.Size(193, 21);
-            this.cmbIdReservación.TabIndex = 6;
+            this.cmbIdReservacion.FormattingEnabled = true;
+            this.cmbIdReservacion.Location = new System.Drawing.Point(783, 45);
+            this.cmbIdReservacion.Name = "cmbIdReservacion";
+            this.cmbIdReservacion.Size = new System.Drawing.Size(193, 21);
+            this.cmbIdReservacion.TabIndex = 6;
             // 
             // label4
             // 
@@ -119,6 +130,7 @@
             this.btnEjecutarCheckIn.TabIndex = 8;
             this.btnEjecutarCheckIn.Text = "Ejecutar";
             this.btnEjecutarCheckIn.UseVisualStyleBackColor = true;
+            this.btnEjecutarCheckIn.Click += new System.EventHandler(this.btnEjecutarCheckIn_Click);
             // 
             // dgvCheckIn
             // 
@@ -126,18 +138,119 @@
             this.dgvCheckIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCheckIn.Location = new System.Drawing.Point(23, 115);
             this.dgvCheckIn.Name = "dgvCheckIn";
+            this.dgvCheckIn.ReadOnly = true;
             this.dgvCheckIn.Size = new System.Drawing.Size(953, 150);
             this.dgvCheckIn.TabIndex = 9;
+            // 
+            // dgvCheckOut
+            // 
+            this.dgvCheckOut.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCheckOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCheckOut.Location = new System.Drawing.Point(23, 440);
+            this.dgvCheckOut.Name = "dgvCheckOut";
+            this.dgvCheckOut.ReadOnly = true;
+            this.dgvCheckOut.Size = new System.Drawing.Size(953, 150);
+            this.dgvCheckOut.TabIndex = 19;
+            // 
+            // btnEjecutarCheckOut
+            // 
+            this.btnEjecutarCheckOut.Location = new System.Drawing.Point(634, 409);
+            this.btnEjecutarCheckOut.Name = "btnEjecutarCheckOut";
+            this.btnEjecutarCheckOut.Size = new System.Drawing.Size(75, 23);
+            this.btnEjecutarCheckOut.TabIndex = 18;
+            this.btnEjecutarCheckOut.Text = "Ejecutar";
+            this.btnEjecutarCheckOut.UseVisualStyleBackColor = true;
+            this.btnEjecutarCheckOut.Click += new System.EventHandler(this.btnEjecutarCheckOut_Click);
+            // 
+            // chkCheckOut
+            // 
+            this.chkCheckOut.AutoSize = true;
+            this.chkCheckOut.Location = new System.Drawing.Point(341, 413);
+            this.chkCheckOut.Name = "chkCheckOut";
+            this.chkCheckOut.Size = new System.Drawing.Size(180, 17);
+            this.chkCheckOut.TabIndex = 17;
+            this.chkCheckOut.Text = "Registrar Check In del Huesped.";
+            this.chkCheckOut.UseVisualStyleBackColor = true;
+            // 
+            // cmbIdReservacionOut
+            // 
+            this.cmbIdReservacionOut.FormattingEnabled = true;
+            this.cmbIdReservacionOut.Location = new System.Drawing.Point(783, 370);
+            this.cmbIdReservacionOut.Name = "cmbIdReservacionOut";
+            this.cmbIdReservacionOut.Size = new System.Drawing.Size(193, 21);
+            this.cmbIdReservacionOut.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(671, 373);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Codigo Reservación:";
+            // 
+            // cmbIdHuespedOut
+            // 
+            this.cmbIdHuespedOut.FormattingEnabled = true;
+            this.cmbIdHuespedOut.Location = new System.Drawing.Point(454, 370);
+            this.cmbIdHuespedOut.Name = "cmbIdHuespedOut";
+            this.cmbIdHuespedOut.Size = new System.Drawing.Size(193, 21);
+            this.cmbIdHuespedOut.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(338, 373);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(119, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Identificación Huesped:";
+            // 
+            // cmbNombreHuespedOut
+            // 
+            this.cmbNombreHuespedOut.FormattingEnabled = true;
+            this.cmbNombreHuespedOut.Location = new System.Drawing.Point(119, 370);
+            this.cmbNombreHuespedOut.Name = "cmbNombreHuespedOut";
+            this.cmbNombreHuespedOut.Size = new System.Drawing.Size(193, 21);
+            this.cmbNombreHuespedOut.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 373);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 13);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Nombre Huesped:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(20, 338);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(214, 13);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Reservaciones disponibles para Check Out:";
             // 
             // frmCheck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 636);
+            this.ClientSize = new System.Drawing.Size(995, 636);
+            this.Controls.Add(this.dgvCheckOut);
+            this.Controls.Add(this.btnEjecutarCheckOut);
+            this.Controls.Add(this.chkCheckOut);
+            this.Controls.Add(this.cmbIdReservacionOut);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cmbIdHuespedOut);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.cmbNombreHuespedOut);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.dgvCheckIn);
             this.Controls.Add(this.btnEjecutarCheckIn);
             this.Controls.Add(this.chkCheckIn);
-            this.Controls.Add(this.cmbIdReservación);
+            this.Controls.Add(this.cmbIdReservacion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbIdHuesped);
             this.Controls.Add(this.label3);
@@ -147,6 +260,7 @@
             this.Name = "frmCheck";
             this.Text = "Check In/Out";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCheckIn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCheckOut)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,10 +273,20 @@
         private System.Windows.Forms.ComboBox cmbNombreHuesped;
         private System.Windows.Forms.ComboBox cmbIdHuesped;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbIdReservación;
+        private System.Windows.Forms.ComboBox cmbIdReservacion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox chkCheckIn;
         private System.Windows.Forms.Button btnEjecutarCheckIn;
         private System.Windows.Forms.DataGridView dgvCheckIn;
+        private System.Windows.Forms.DataGridView dgvCheckOut;
+        private System.Windows.Forms.Button btnEjecutarCheckOut;
+        private System.Windows.Forms.CheckBox chkCheckOut;
+        private System.Windows.Forms.ComboBox cmbIdReservacionOut;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbIdHuespedOut;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbNombreHuespedOut;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
